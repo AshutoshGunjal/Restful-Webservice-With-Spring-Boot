@@ -16,7 +16,7 @@ Creating a high-quality REST API involves a set of key considerations:
 
 A well-designed REST API caters to both your application's needs and the expectations of its consumers, leading to an efficient and user-friendly API.
 
-3. **Simple Hello World REST APIs**
+1**Simple Hello World REST APIs**
 
 Key Concepts:
 
