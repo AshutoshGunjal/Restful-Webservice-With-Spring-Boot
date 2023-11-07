@@ -18,8 +18,6 @@ A well-designed REST API caters to both your application's needs and the expecta
 
 3. **Simple Hello World REST APIs**
 
-Experience the Spring Boot magic by building three straightforward Hello World REST APIs. This exercise will help you grasp the fundamentals of crafting REST APIs with Spring Boot.
-
 Key Concepts:
 
 - **@RestController**: Annotate your controllers with `@RestController` to define them as REST endpoints, allowing them to respond to HTTP requests.
@@ -30,4 +28,4 @@ Key Concepts:
 
 - **JSON Conversion**: Spring Boot simplifies JSON conversion for handling data between your API and clients.
 
-This hands-on practice will introduce you to the core elements of building RESTful APIs with Spring Boot.
+This hands-on practice will introduce to the core elements of building RESTful APIs with Spring Boot.
