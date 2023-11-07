@@ -29,3 +29,10 @@ Key Concepts:
 - **JSON Conversion**: Spring Boot simplifies JSON conversion for handling data between your API and clients.
 
 This hands-on practice will introduce to the core elements of building RESTful APIs with Spring Boot.
+
+### Understanding Path Parameters
+
+Path parameters are variable values within your URLs. For instance, consider the URL: `/hello-world/path-variable/ashu`. In this case, "ashu" is a path parameter.
+
+To capture these path parameter values in your Spring Boot application, you can use the `@PathVariable` annotation. It enables you to extract and use these dynamic values in your REST API methods.
+
