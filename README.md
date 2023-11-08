@@ -66,3 +66,13 @@ REST APIs use specific request methods to perform actions on resources:
 - Retrieve details of posts: `GET /users/{id}/posts/{post id}`
 
 This REST API structure defines how we interact with resources in a Social Media Application, including users and their posts.
+
+- Response Entity: `use to represent the HTTP response returned from a controller method. It allows us to customize and control the HTTP response, including status code, headers and response body , when building RESTful web services or APIs`
+- ServletUriComponentsBuilder.fromCurrentRequest(): `useful for generating URIs that are related to the current request, such as for creating links to other resources, redirecting to specific URLs etc.`
+
+```sh
+URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+.path("/{id}")
+.buildAndExpand(savedUser.getId())
+.toUri();
+```

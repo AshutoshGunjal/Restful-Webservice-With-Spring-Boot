@@ -1,7 +1,10 @@
 package com.learning.rest.webservices.restfulwebservices.users;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -27,7 +30,18 @@ public class UserResourceController {
 
     //Create a user: POST /users
     @PostMapping("/users")
-    public void createUsers(@RequestBody Users user) {
-        service.save(user);
+    public ResponseEntity<Users> createUsers(@RequestBody Users user) {
+        Users savedUser = service.save(user);
+
+        /*return URI of the created resource
+            For example: /users/4 => /users/{id},    users.getID();
+        */
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedUser.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).build();
     }
 }
