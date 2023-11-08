@@ -36,3 +36,33 @@ Path parameters are variable values within your URLs. For instance, consider the
 
 To capture these path parameter values in your Spring Boot application, you can use the `@PathVariable` annotation. It enables you to extract and use these dynamic values in your REST API methods.
 
+### Request Methods for REST API
+
+REST APIs use specific request methods to perform actions on resources:
+
+- **GET**: Retrieve details of a resource.
+- **POST**: Create a new resource.
+- **PUT**: Update an existing resource.
+- **PATCH**: Update part of a resource.
+- **DELETE**: Delete a resource.
+
+### Social Media Application REST API Structure:**
+
+**Key Resources:**
+- Users
+- Posts
+
+**Users REST API:**
+
+- Retrieve all users: `GET /users`
+- Create a user: `POST /users`
+- Retrieve one user: `GET /users/{id}` (e.g., `/users/1`)
+- Delete a user: `DELETE /users/{id}` (e.g., `/users/1`)
+
+**Posts REST API:**
+
+- Retrieve all posts for a user: `GET /users/{id}/posts`
+- Create a post for a user: `POST /users/{id}/posts`
+- Retrieve details of posts: `GET /users/{id}/posts/{post id}`
+
+This REST API structure defines how we interact with resources in a Social Media Application, including users and their posts.
