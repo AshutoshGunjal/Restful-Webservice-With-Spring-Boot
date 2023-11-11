@@ -127,3 +127,23 @@ Example: `en` (English), `fr` (French), etc.
 This mechanism allows consumers of the REST API to communicate their preferences to the provider, indicating the desired format or language for the representation of the resource. By including the appropriate headers in the HTTP request (e.g., `Accept` and `Accept-Language`), consumers can influence the type of response they receive from the API.
 
 This flexibility in content negotiation enhances the interoperability of RESTful services, enabling clients to retrieve information in a format and language that best suits their requirements.
+
+# Internationalization (i18n)
+
+When your REST APIs have consumers around the world, it's crucial to customize responses to cater to users from diverse regions. This process is known as Internationalization (i18n).
+
+## Customizing for Users Around the World
+
+Internationalization involves adapting the content of your application to different languages and regions. One common approach is to leverage the HTTP Request Header - `Accept-Language`, which indicates the natural language and locale that the consumer prefers.
+
+### Example Usage of `Accept-Language`:
+
+- `en`: English ("Good Morning")
+- `nl`: Dutch ("Goedemorgen")
+- `fr`: French ("Bonjour")
+
+By interpreting the `Accept-Language` header, your application can dynamically serve content in the preferred language and locale of the user, providing a more personalized and user-friendly experience.
+
+This internationalization strategy ensures that your REST APIs can effectively serve a global audience, accommodating language and cultural preferences seamlessly.
+
+- MessageSource: `Strategy Interface for resolving messages, with support for the parameterization and internationalization of such messages.`Intern
