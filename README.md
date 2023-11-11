@@ -83,3 +83,11 @@ URI location = ServletUriComponentsBuilder.fromCurrentRequest()
 @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
 void teaPot() {}
 ```
+
+**Validation and Jakarta with Spring**
+
+`Validation is a crucial aspect of any application. It ensures that the data your application processes are correct and useful. Without it, you'd be left dealing with 
+inconsistent data, leading to bugs that are hard to trace and fix.`
+
+- Jakarta Bean Validation: `It's a specification that standardizes validation, making it easier and more efficient. WHen combined with Spring Boot, a popular framework 
+for building Java applications, you get a powerful tool that simplifies validation, letting you focus on building your application's core functionality`

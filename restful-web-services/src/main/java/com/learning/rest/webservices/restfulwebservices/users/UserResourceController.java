@@ -1,5 +1,6 @@
 package com.learning.rest.webservices.restfulwebservices.users;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -43,7 +44,7 @@ public class UserResourceController {
 
     //Create a user: POST /users
     @PostMapping("/users")
-    public ResponseEntity<Users> createUsers(@RequestBody Users user) {
+    public ResponseEntity<Users> createUsers(@Valid @RequestBody Users user) {
         Users savedUser = service.save(user);
 
         /*return URI of the created resource
