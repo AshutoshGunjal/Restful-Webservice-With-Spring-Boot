@@ -76,3 +76,10 @@ URI location = ServletUriComponentsBuilder.fromCurrentRequest()
 .buildAndExpand(savedUser.getId())
 .toUri();
 ```
+- ResponseStatus: `When an endpoint returns successfully, Spring provides an HTTP 200 (OK) response. If we want to specify the response status of a controller method, we can mark that method with @ResponseStatus. It has two interchangeable arguments for the desired response status: code, and value.
+  For example, we can indicate that the server refuses to brew coffee because it is a teapot:`
+
+```sh
+@ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+void teaPot() {}
+```
