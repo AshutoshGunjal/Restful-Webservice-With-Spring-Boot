@@ -25,7 +25,12 @@ public class UserResourceController {
     //Retrieve one user: GET /users/{id} (e.g., /users/1)
     @GetMapping("/users/{id}")
     public Users retrieveSpecificUser(@PathVariable int id) {
-        return service.findSpecificUser(id);
+        Users user = service.findSpecificUser(id);
+
+        if(user == null) {
+            throw new UserNotFoundException("id:" + id);
+        }
+        return user;
     }
 
     //Create a user: POST /users
@@ -36,7 +41,6 @@ public class UserResourceController {
         /*return URI of the created resource
             For example: /users/4 => /users/{id},    users.getID();
         */
-
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedUser.getId())
