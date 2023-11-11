@@ -33,6 +33,14 @@ public class UserResourceController {
         return user;
     }
 
+    //Delete one user: DELETE /users/{id}
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<String> deleteSpecificUser(@PathVariable int id) {
+        service.deleteSpecificUserById(id);
+
+        return ResponseEntity.ok("User Deleted");
+    }
+
     //Create a user: POST /users
     @PostMapping("/users")
     public ResponseEntity<Users> createUsers(@RequestBody Users user) {
