@@ -146,4 +146,36 @@ By interpreting the `Accept-Language` header, your application can dynamically s
 
 This internationalization strategy ensures that your REST APIs can effectively serve a global audience, accommodating language and cultural preferences seamlessly.
 
-- MessageSource: `Strategy Interface for resolving messages, with support for the parameterization and internationalization of such messages.`Intern
+- MessageSource: `Strategy Interface for resolving messages, with support for the parameterization and internationalization of such messages.`
+
+# Versioning of REST API
+
+When you've developed a robust REST API with a large user base, introducing changes, especially breaking changes, requires careful consideration. One effective solution is to implement versioning for your REST API.
+
+## Scenario Example
+
+Consider a scenario where you need to make a breaking change, such as splitting the 'name' field into 'firstName' and 'lastName'.
+
+## Solution: Versioning Options
+
+There are various options for implementing versioning in REST APIs:
+
+1. **URL Versioning**:
+  - Example: `/api/v1/resource`
+  - Advantage: Explicit version in the URL, easy to understand.
+
+2. **Request Parameter Versioning**:
+  - Example: `/api/resource?version=1`
+  - Advantage: Version specified as a parameter, flexibility.
+
+3. **Request Header Versioning**:
+  - Example: Include a custom header like `Api-Version: 1` in the request.
+  - Advantage: Versioning information is separated from the URL, clean and less intrusive.
+
+4. **Media Type Versioning**:
+  - Example: `/api/resource` with `Accept: application/vnd.company.resource.v1+json`
+  - Advantage: Versioning through the media type, especially useful for content negotiation.
+
+Choose the versioning strategy that best aligns with your application's requirements and the preferences of your API consumers.
+
+Implementing versioning ensures a smooth transition for your existing consumers while allowing you to evolve and improve your REST API over time.
