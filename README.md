@@ -67,7 +67,7 @@ REST APIs use specific request methods to perform actions on resources:
 
 This REST API structure defines how we interact with resources in a Social Media Application, including users and their posts.
 
-- Response Entity: `use to represent the HTTP response returned from a controller method. It allows us to customize and control the HTTP response, including status code, headers and response body , when building RESTful web services or APIs`
+**Response Entity:** Use to represent the HTTP response returned from a controller method. It allows us to customize and control the HTTP response, including status code, headers and response body , when building RESTful web services or APIs
 - ServletUriComponentsBuilder.fromCurrentRequest(): `useful for generating URIs that are related to the current request, such as for creating links to other resources, redirecting to specific URLs etc.`
 
 ```sh
@@ -76,23 +76,23 @@ URI location = ServletUriComponentsBuilder.fromCurrentRequest()
 .buildAndExpand(savedUser.getId())
 .toUri();
 ```
-- ResponseStatus: `When an endpoint returns successfully, Spring provides an HTTP 200 (OK) response. If we want to specify the response status of a controller method, we can mark that method with @ResponseStatus. It has two interchangeable arguments for the desired response status: code, and value.
-  For example, we can indicate that the server refuses to brew coffee because it is a teapot:`
+**ResponseStatus:** When an endpoint returns successfully, Spring provides an HTTP 200 (OK) response. If we want to specify the response status of a controller method, we can mark that method with @ResponseStatus. It has two interchangeable arguments for the desired response status: code, and value.
+  For example, we can indicate that the server refuses to brew coffee because it is a teapot:
 
 ```sh
 @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
 void teaPot() {}
 ```
 
-**Validation and Jakarta with Spring**
+**Validation and Jakarta with Spring:**
 
-`Validation is a crucial aspect of any application. It ensures that the data your application processes are correct and useful. Without it, you'd be left dealing with 
-inconsistent data, leading to bugs that are hard to trace and fix.`
+Validation is a crucial aspect of any application. It ensures that the data your application processes are correct and useful. Without it, you'd be left dealing with 
+inconsistent data, leading to bugs that are hard to trace and fix.
 
 - Jakarta Bean Validation: `It's a specification that standardizes validation, making it easier and more efficient. WHen combined with Spring Boot, a popular framework 
 for building Java applications, you get a powerful tool that simplifies validation, letting you focus on building your application's core functionality`
 
-**Springdoc-openapi & Swagger UI**
-`It helps to automate the generation of API documentation using spring boot projects. It works by examining the application at runtime to infer API semantics based on
+**Springdoc-openapi & Swagger UI:**
+It helps to automate the generation of API documentation using spring boot projects. It works by examining the application at runtime to infer API semantics based on
 spring configuration, class structure and various annotaions.
-It automatically generates documentation in JSON/YAML and HTML format APIs. This doc is completed by comments using swagger API annotations.`
+It automatically generates documentation in JSON/YAML and HTML format APIs. This doc is completed by comments using swagger API annotations.
