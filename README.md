@@ -96,3 +96,34 @@ for building Java applications, you get a powerful tool that simplifies validati
 It helps to automate the generation of API documentation using spring boot projects. It works by examining the application at runtime to infer API semantics based on
 spring configuration, class structure and various annotaions.
 It automatically generates documentation in JSON/YAML and HTML format APIs. This doc is completed by comments using swagger API annotations.
+
+# Content Negotiation
+
+In the context of REST APIs, content negotiation refers to the ability to request different representations of the same resource using the same URI. This typically involves specifying preferences for content types (e.g., XML or JSON) or languages (e.g., English, Marathi, Dutch).
+
+## Use Case Examples
+
+### Different Content Types:
+
+- XML
+- JSON
+
+### Different Languages:
+
+- English
+- Marathi
+- Dutch
+
+## How Consumers Communicate Preferences
+
+### Accept Header (MIME Types):
+
+Example: `application/xml`, `application/json`, etc.
+
+### Accept-Language Header:
+
+Example: `en` (English), `fr` (French), etc.
+
+This mechanism allows consumers of the REST API to communicate their preferences to the provider, indicating the desired format or language for the representation of the resource. By including the appropriate headers in the HTTP request (e.g., `Accept` and `Accept-Language`), consumers can influence the type of response they receive from the API.
+
+This flexibility in content negotiation enhances the interoperability of RESTful services, enabling clients to retrieve information in a format and language that best suits their requirements.
