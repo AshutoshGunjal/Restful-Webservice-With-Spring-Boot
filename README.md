@@ -91,3 +91,8 @@ inconsistent data, leading to bugs that are hard to trace and fix.`
 
 - Jakarta Bean Validation: `It's a specification that standardizes validation, making it easier and more efficient. WHen combined with Spring Boot, a popular framework 
 for building Java applications, you get a powerful tool that simplifies validation, letting you focus on building your application's core functionality`
+
+**Springdoc-openapi & Swagger UI**
+`It helps to automate the generation of API documentation using spring boot projects. It works by examining the application at runtime to infer API semantics based on
+spring configuration, class structure and various annotaions.
+It automatically generates documentation in JSON/YAML and HTML format APIs. This doc is completed by comments using swagger API annotations.`
