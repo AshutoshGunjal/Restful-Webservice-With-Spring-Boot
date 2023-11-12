@@ -160,7 +160,7 @@ Consider a scenario where you need to make a breaking change, such as splitting 
 
 There are various options for implementing versioning in REST APIs:
 
-1. **URL Versioning**:
+1. **URI Versioning**:
   - Example: `/api/v1/resource`
   - Advantage: Explicit version in the URL, easy to understand.
 
@@ -179,3 +179,33 @@ There are various options for implementing versioning in REST APIs:
 Choose the versioning strategy that best aligns with your application's requirements and the preferences of your API consumers.
 
 Implementing versioning ensures a smooth transition for your existing consumers while allowing you to evolve and improve your REST API over time.
+
+# Versioning REST API - Factors to Consider
+
+When considering versioning for your REST API, there are several factors to take into account:
+
+## Factors to Consider:
+
+1. **URI Pollution**:
+  - Consider how versioning impacts your URI structure. Avoid excessive changes that may lead to URI pollution.
+
+2. **Misuse of HTTP Headers**:
+  - Be cautious about overloading or misusing HTTP headers for versioning, as it may conflict with their intended use.
+
+3. **Caching**:
+  - Versioning can affect caching strategies. Ensure compatibility with caching mechanisms to maintain performance.
+
+4. **Browser Execution**:
+  - Evaluate if the API can be conveniently executed directly in web browsers, taking into consideration versioning constraints.
+
+5. **API Documentation**:
+  - Keep API documentation updated to reflect the versioning strategy in use, helping consumers understand and adapt.
+
+## Summary: No Perfect Solution
+
+While versioning is essential for API evolution, there's no one-size-fits-all solution. Each approach has its trade-offs, and the choice depends on the specific needs of your application and users.
+
+## Recommendation
+
+Think about versioning even before you need it. Plan for scalability and anticipate how your API might evolve. Consider adopting a consistent versioning approach across your enterprise for clarity and ease of management.
+
