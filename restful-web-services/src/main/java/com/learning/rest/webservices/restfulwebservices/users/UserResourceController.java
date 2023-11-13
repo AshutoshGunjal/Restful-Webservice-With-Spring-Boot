@@ -1,6 +1,8 @@
 package com.learning.rest.webservices.restfulwebservices.users;
 
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -25,13 +27,20 @@ public class UserResourceController {
 
     //Retrieve one user: GET /users/{id} (e.g., /users/1)
     @GetMapping("/users/{id}")
-    public Users retrieveSpecificUser(@PathVariable int id) {
+    public EntityModel<Users> retrieveSpecificUser(@PathVariable int id) {
         Users user = service.findSpecificUser(id);
 
         if(user == null) {
             throw new UserNotFoundException("id:" + id);
         }
-        return user;
+
+        EntityModel<Users> entityModel = EntityModel.of(user);
+
+        WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
+
+        entityModel.add(link.withRel("all-users"));
+
+        return entityModel;
     }
 
     //Delete one user: DELETE /users/{id}
