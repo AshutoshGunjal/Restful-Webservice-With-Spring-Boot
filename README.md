@@ -209,3 +209,95 @@ While versioning is essential for API evolution, there's no one-size-fits-all so
 
 Think about versioning even before you need it. Plan for scalability and anticipate how your API might evolve. Consider adopting a consistent versioning approach across your enterprise for clarity and ease of management.
 
+# HATEOAS (Hypermedia As The Engine Of Application State)
+
+In the world of APIs, providing data is just one aspect. What if APIs could also guide consumers on how to perform subsequent actions? This is where HATEOAS (Hypermedia As The Engine Of Application State) comes in.
+
+## Key Concept
+
+Websites allow users to not only view data but also perform actions. HATEOAS extends this concept to APIs by enriching responses with hypermedia links, providing consumers with guidance on what actions they can take next.
+
+## Implementation Options
+
+1. **Custom Format and Implementation:**
+  - *Challenge:* Difficult to maintain.
+  - *Pros:* Complete flexibility.
+  - *Cons:* Requires more effort and may lack standardized conventions.
+
+2. **Use Standard Implementation:**
+  - *Example:* HAL (JSON Hypertext Application Language)
+  - *Pros:* Standardized format.
+  - *Cons:* May not cover all use cases.
+
+3. **Spring HATEOAS:**
+  - *Pros:* Generates HAL responses with hyperlinks to resources.
+  - *Cons:* Tied to the Spring ecosystem.
+
+## HAL (JSON Hypertext Application Language)
+
+HAL is a simple format that provides a consistent way to hyperlink between resources in your API. It's a standard that helps in creating self-describing APIs.
+
+## Spring HATEOAS
+
+If you are working in a Spring ecosystem, Spring HATEOAS is a powerful tool. It automates the generation of HAL responses, making it easier to include hyperlinks in your API responses.
+
+### Example
+
+```json
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "_links": {
+    "self": {
+      "href": "/api/users/123"
+    },
+    "orders": {
+      "href": "/api/users/123/orders"
+    }
+  }
+}
+```
+
+# Customizing REST API Responses - Filtering and more...
+
+When working with REST APIs, customizing the response is often crucial. Serialization, the process of converting objects to a stream (e.g., JSON), plays a significant role in shaping API responses. In Java, Jackson is a widely used framework for JSON serialization.
+
+## JSON Serialization with Jackson
+
+### Most Popular JSON Serialization in Java: Jackson
+
+Jackson is a popular choice for JSON serialization in Java. It provides powerful features to customize the way JSON is generated.
+
+### Customizing REST API Responses with Jackson
+
+- **Customize Field Names in Response:**
+  - Use `@JsonProperty` annotation to define custom field names in the JSON response.
+
+- **Return Only Selected Fields:**
+  - Implement filtering to return only selected fields in the API response.
+
+### Filtering
+
+Filtering is a technique to control what data gets serialized and returned in the API response.
+
+- **Static Filtering:**
+  - Apply the same filtering for a bean across different REST APIs.
+  - Use annotations like `@JsonIgnoreProperties` and `@JsonIgnore`.
+
+- **Dynamic Filtering:**
+  - Customize filtering for a bean for specific REST APIs.
+  - Use `@JsonFilter` in combination with a `FilterProvider`.
+
+### Example
+
+```java
+public class User {
+    @JsonProperty("user_id")
+    private Long userId;
+    
+    @JsonIgnore
+    private String password;
+    
+    // Other fields, getters, and setters...
+}
+```
