@@ -15,8 +15,6 @@ import java.util.Optional;
 @RestController
 public class UserJPAResourceController {
 
-    private UserDAOService service;
-
     private UserRepository repository;
     public UserJPAResourceController(UserRepository repository) {
 
@@ -32,6 +30,7 @@ public class UserJPAResourceController {
     //Retrieve one user: GET /users/{id} (e.g., /users/1)
     @GetMapping("/jpa/users/{id}")
     public EntityModel<Users> retrieveSpecificUser(@PathVariable int id) {
+
         Optional<Users> user = repository.findById(id);
 
         if(user.isEmpty()) {
@@ -45,6 +44,19 @@ public class UserJPAResourceController {
         entityModel.add(link.withRel("all-users"));
 
         return entityModel;
+    }
+
+    //Retrieve all posts for a specific user
+    @GetMapping("/jpa/users/{id}/posts")
+    public List<Post> retrievePostsForUser(@PathVariable int id) {
+
+        Optional<Users> user = repository.findById(id);
+
+        if(user.isEmpty()) {
+            throw  new UserNotFoundException("id:" + id);
+        }
+
+        return user.get().getPosts();
     }
 
     //Delete one user: DELETE /users/{id}
