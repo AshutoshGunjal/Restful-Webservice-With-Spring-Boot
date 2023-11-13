@@ -11,14 +11,16 @@ import java.time.LocalDate;
 
 @Entity(name = "user_details")
 public class Users {
+
+    protected Users() {}
     @Id
     @GeneratedValue
     private Integer id;
     @Size(min = 2, message = "Name should be at least 2 characters")
-    @JsonProperty("user_name")
+//    @JsonProperty("user_name")
     private String name;
     @Past(message = "Birth Date should be in the past")
-    @JsonProperty("birth_date")
+//    @JsonProperty("birth_date")
     private LocalDate birthDate;
 
     public Integer getId() {
