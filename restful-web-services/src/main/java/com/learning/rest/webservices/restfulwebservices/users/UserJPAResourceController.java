@@ -16,27 +16,27 @@ import java.util.Optional;
 @RestController
 public class UserJPAResourceController {
 
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     private PostsRepository postRepository;
 
-    public UserJPAResourceController(UserRepository repository, PostsRepository postRepository) {
+    public UserJPAResourceController(UserRepository userRepository, PostsRepository postRepository) {
 
-        this.repository = repository;
+        this.userRepository = userRepository;
         this.postRepository = postRepository;
     }
 
     //Retrieve all users: GET /users
     @GetMapping("/jpa/users")
     public List<Users> retrieveAllUsers() {
-        return repository.findAll();
+        return userRepository.findAll();
     }
 
     //Retrieve one user: GET /users/{id} (e.g., /users/1)
     @GetMapping("/jpa/users/{id}")
     public EntityModel<Users> retrieveSpecificUser(@PathVariable int id) {
 
-        Optional<Users> user = repository.findById(id);
+        Optional<Users> user = userRepository.findById(id);
 
         if(user.isEmpty()) {
             throw new UserNotFoundException("id:" + id);
@@ -55,7 +55,7 @@ public class UserJPAResourceController {
     @GetMapping("/jpa/users/{id}/posts")
     public List<Post> retrievePostsForUser(@PathVariable int id) {
 
-        Optional<Users> user = repository.findById(id);
+        Optional<Users> user = userRepository.findById(id);
 
         if(user.isEmpty()) {
             throw  new UserNotFoundException("id:" + id);
@@ -67,7 +67,7 @@ public class UserJPAResourceController {
     //Delete one user: DELETE /users/{id}
     @DeleteMapping("/jpa/users/{id}")
     public ResponseEntity<String> deleteSpecificUser(@PathVariable int id) {
-        repository.deleteById(id);
+        userRepository.deleteById(id);
 
         return ResponseEntity.ok("User Deleted");
     }
@@ -75,7 +75,7 @@ public class UserJPAResourceController {
     //Create a user: POST /users
     @PostMapping("/jpa/users")
     public ResponseEntity<Users> createUsers(@Valid @RequestBody Users user) {
-        Users savedUser = repository.save(user);
+        Users savedUser = userRepository.save(user);
 
         /*return URI of the created resource
             For example: /users/4 => /users/{id},    users.getID();
@@ -92,7 +92,7 @@ public class UserJPAResourceController {
     @PostMapping("/jpa/users/{id}/posts")
     public ResponseEntity<Object> createPostsForUser(@PathVariable int id, @Valid @RequestBody Post post) {
 
-        Optional<Users> user = repository.findById(id);
+        Optional<Users> user = userRepository.findById(id);
 
         if(user.isEmpty()) {
             throw  new UserNotFoundException("id:" + id);
