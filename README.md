@@ -1,4 +1,4 @@
-# Restful-Webservice-With-Spring-Boot
+# SOCIAL MEDIA APPLICATION | Restful-Webservice-With-Spring-Boot
 
 ### Building a Robust REST API
 
