@@ -1,5 +1,6 @@
 package com.learning.rest.webservices.restfulwebservices.users;
 
+import com.learning.rest.webservices.restfulwebservices.jpa.PostsRepository;
 import com.learning.rest.webservices.restfulwebservices.jpa.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
@@ -16,9 +17,13 @@ import java.util.Optional;
 public class UserJPAResourceController {
 
     private UserRepository repository;
-    public UserJPAResourceController(UserRepository repository) {
+
+    private PostsRepository postRepository;
+
+    public UserJPAResourceController(UserRepository repository, PostsRepository postRepository) {
 
         this.repository = repository;
+        this.postRepository = postRepository;
     }
 
     //Retrieve all users: GET /users
@@ -78,6 +83,31 @@ public class UserJPAResourceController {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedUser.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).build();
+    }
+
+    //Create a posts for a specific user
+    @PostMapping("/jpa/users/{id}/posts")
+    public ResponseEntity<Object> createPostsForUser(@PathVariable int id, @Valid @RequestBody Post post) {
+
+        Optional<Users> user = repository.findById(id);
+
+        if(user.isEmpty()) {
+            throw  new UserNotFoundException("id:" + id);
+        }
+
+        post.setUser(user.get());
+
+        Post savedPosts = postRepository.save(post);
+
+        /*return URI of the created resource
+            For example: /users/4 => /users/{id},    users.getID();
+        */
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedPosts.getId())
                 .toUri();
 
         return ResponseEntity.created(location).build();
